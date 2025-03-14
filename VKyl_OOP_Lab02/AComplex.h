@@ -1,4 +1,7 @@
 #pragma once
+#include <iostream>
+using std::ostream;
+
 class TComplex;
 class AComplex
 {
@@ -25,12 +28,14 @@ public:
 	AComplex& operator+=(TComplex z);
 	AComplex& operator-=(AComplex z);
 	AComplex& operator-=(TComplex z);
-
-	static  const double getAngle(const AComplex&& z);
-	static const double getLength(const AComplex&& z);
 };
+
+const double arg(const AComplex& z);
+const double norm(const AComplex& z);
 
 AComplex& operator+(AComplex z1, AComplex z2);
 AComplex& operator+(AComplex z1, TComplex z2);
 AComplex& operator-(AComplex z1, AComplex z2);
 AComplex& operator-(AComplex z1, TComplex z2);
+
+ostream& operator<<(ostream& out, AComplex z);
