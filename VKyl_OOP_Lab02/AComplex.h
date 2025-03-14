@@ -26,8 +26,8 @@ public:
 	AComplex& operator-=(AComplex z);
 	AComplex& operator-=(TComplex z);
 
-	static  const double getAngle(const AComplex z);
-	static const double getLength(const AComplex z);
+	static  const double getAngle(const AComplex&& z);
+	static const double getLength(const AComplex&& z);
 };
 
 AComplex& operator+(AComplex z1, AComplex z2);
