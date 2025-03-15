@@ -23,20 +23,14 @@ public:
 
 	const double& arg() { return _arg; }
 	const double& arg() const { return _arg; }
-	const double& arg(const double& val);
+	const double& arg(const double&& val);
 
 	const double& norm() { return _norm; }
 	const double& norm() const { return _norm; }
-	const double& norm(const double& val);
+	const double& norm(const double&& val);
 
 	TComplex& operator=(const TComplex& z);
 	TComplex& operator=(const AComplex& z);
-
-	TComplex& operator*=(const TComplex& z);
-	TComplex& operator*=(const AComplex& z);
-
-	TComplex& operator/=(const TComplex& z);
-	TComplex& operator/=(const AComplex& z);
 
 private:
 	void normalize()
@@ -57,6 +51,12 @@ namespace tcomplex
 	const double real(const TComplex& z);
 	const double imaginary(const TComplex& z);
 }
+
+TComplex& operator*=(const TComplex& z1, const TComplex& z2);
+TComplex& operator*=(const TComplex& z1, const AComplex& z2);
+TComplex& operator/=(TComplex& z1, const TComplex& z2);
+TComplex& operator/=(TComplex& z1, const AComplex& z2);
+
 const TComplex operator*(const TComplex& z1, const TComplex& z2);
 const TComplex operator*(const TComplex& z1, const AComplex& z2);
 const TComplex operator/(const TComplex& z1, const TComplex& z2);
