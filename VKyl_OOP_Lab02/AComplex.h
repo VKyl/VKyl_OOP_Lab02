@@ -12,7 +12,7 @@ public:
 	AComplex(const double& re = 0, const double& im = 0) : _re(re), _im(im) {}
 	AComplex(const AComplex& c) = default;
 	AComplex(AComplex& c) = default;
-	AComplex(const TComplex& c) : _re(tcomplex::real(c)), _im(tcomplex::imaginary(c)) {}
+	AComplex(const TComplex& c);
 
 	~AComplex() = default;
 
@@ -33,16 +33,16 @@ namespace acomplex
 	const double norm(const AComplex& z);
 }
 
-AComplex& operator+=(AComplex& z1, const AComplex& z2);
-AComplex operator+=(const AComplex& z1, const AComplex& z2) { return z1 + z2; }
-//AComplex& operator+=(const TComplex& z1, const TComplex& z2);
-AComplex& operator-=(AComplex& z1, const AComplex& z2);
-AComplex operator-=(const AComplex& z1, const AComplex& z2) { return z1 - z2; }
-//AComplex& operator-=(const TComplex& z1, const TComplex& z2);
-
 const AComplex operator+(const AComplex& z1, const AComplex& z2);
 //const AComplex operator+(const AComplex& z1, const TComplex& z2);
 const AComplex operator-(const AComplex& z1, const AComplex& z2);
 //const AComplex operator-(const AComplex& z1, const TComplex& z2);
+
+AComplex& operator+=(AComplex& z1, const AComplex& z2);
+AComplex operator+=(const AComplex& z1, const AComplex& z2);
+//AComplex& operator+=(const TComplex& z1, const TComplex& z2);
+AComplex& operator-=(AComplex& z1, const AComplex& z2);
+AComplex operator-=(const AComplex& z1, const AComplex& z2);
+//AComplex& operator-=(const TComplex& z1, const TComplex& z2);
 
 ostream& operator<<(ostream& out, AComplex z);

@@ -11,6 +11,6 @@ int main()
     c += c;
     c -= c;
     a += a;
-    b += b;
+    b += b + c - a * c + b / (c-a);
     std::cout << "Hello World!\n";
 }

@@ -2,11 +2,7 @@
 #include "AComplex.h"
 
 
-TComplex::TComplex(const AComplex& z)
-{
-    _arg = acomplex::arg(z);
-    _norm = acomplex::norm(z);
-}
+TComplex::TComplex(const AComplex& z): _arg(acomplex::arg(z)), _norm(acomplex::norm(z)) {}
 
 const double& TComplex::arg(const double&& val)
 {
@@ -59,6 +55,8 @@ TComplex& operator/=(TComplex& z1, const TComplex& z2)
     return z1;
 }
 
+TComplex operator/=(const TComplex& z1, const TComplex& z2) { return z1 / z2; }
+
 //TComplex& operator/=(TComplex & z1, const AComplex& z2)
 //{
 //    const double z2_norm = acomplex::norm(z2);
@@ -74,6 +72,8 @@ TComplex& operator*=(TComplex& z1, const TComplex& z2)
     z1.norm(z1.norm() * z2.norm());
     return z1;
 }
+
+TComplex operator*=(const TComplex& z1, const TComplex& z2) { return z1 * z2; }
 
 //TComplex& operator*=(TComplex& z1, const AComplex& z2) 
 //{

@@ -8,6 +8,8 @@
 //    return *this;
 //}
 
+AComplex::AComplex(const TComplex& c) : _re(tcomplex::real(c)), _im(tcomplex::imaginary(c)) {}
+
 namespace acomplex
 {
     const double arg(const AComplex& z)
@@ -52,6 +54,8 @@ const AComplex operator+(const AComplex& z1, const AComplex& z2)
     return { z1.re() + z2.re(), z1.im() + z2.im() };
 }
 
+AComplex operator+=(const AComplex& z1, const AComplex& z2) { return z1 + z2; }
+
 //const AComplex operator+(const AComplex& z1, const TComplex& z2)
 //{
 //    // Addition implementation goes here
@@ -63,6 +67,8 @@ const AComplex operator-(const AComplex& z1, const AComplex& z2)
     // Subtraction implementation goes here
     return { z1.re() - z2.re(), z1.im() - z2.im() };
 }
+
+AComplex operator-=(const AComplex& z1, const AComplex& z2) { return z1 - z2; }
 
 //const AComplex operator-(const AComplex& z1, const TComplex& z2)
 //{

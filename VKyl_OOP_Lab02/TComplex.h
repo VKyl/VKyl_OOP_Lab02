@@ -48,18 +48,18 @@ namespace tcomplex
 	const double real(const TComplex& z);
 	const double imaginary(const TComplex& z);
 }
-
-TComplex& operator*=(TComplex& z1, const TComplex& z2);
-TComplex operator*=(const TComplex& z1, const TComplex& z2) { return z1 * z2; }
-
-//TComplex& operator*=(const TComplex& z1, const AComplex& z2);
-TComplex& operator/=(TComplex& z1, const TComplex& z2);
-TComplex operator/=(const TComplex& z1, const TComplex& z2) { return z1 / z2; }
 //TComplex& operator/=(TComplex& z1, const AComplex& z2);
 
 const TComplex operator*(const TComplex& z1, const TComplex& z2);
 //const TComplex operator*(const TComplex& z1, const AComplex& z2);
 const TComplex operator/(const TComplex& z1, const TComplex& z2);
 //const TComplex operator/(const TComplex& z1, const AComplex& z2);
+
+TComplex& operator*=(TComplex& z1, const TComplex& z2);
+TComplex operator*=(const TComplex& z1, const TComplex& z2);
+
+//TComplex& operator*=(const TComplex& z1, const AComplex& z2);
+TComplex& operator/=(TComplex& z1, const TComplex& z2);
+TComplex operator/=(const TComplex& z1, const TComplex& z2);
 
 ostream& operator<<(ostream& out, TComplex z);
