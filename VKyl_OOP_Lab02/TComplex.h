@@ -1,8 +1,11 @@
 #pragma once
 #include <iostream>
+#include <numbers>
 using std::ostream;
 
 const std::overflow_error ZERO_DIVISON_EXCEPTION = std::overflow_error("The dark magic of dividing by zero is forbidden!");
+const double PI = std::numbers::pi_v<double>;
+const double PERIOD = 2 * PI;
 
 class AComplex;
 
@@ -18,11 +21,13 @@ public:
 	TComplex(const AComplex& z);
 	~TComplex() = default;
 
-	double& arg() { return _arg; }
+	const double& arg() { return _arg; }
 	const double& arg() const { return _arg; }
+	const double& arg(const double& val);
 
-	double& norm() { return _norm; }
+	const double& norm() { return _norm; }
 	const double& norm() const { return _norm; }
+	const double& norm(const double& val);
 
 	TComplex& operator=(const TComplex& z);
 	TComplex& operator=(const AComplex& z);
@@ -32,6 +37,19 @@ public:
 
 	TComplex& operator/=(const TComplex& z);
 	TComplex& operator/=(const AComplex& z);
+
+private:
+	void normalize()
+	{
+		if (_norm < 0) 
+		{ 
+			_norm *= -1; 
+			_arg += PI;
+		}
+
+		if(_arg != 0) _arg = fmod(_arg, PERIOD);
+	}
+
 };
 
 namespace tcomplex

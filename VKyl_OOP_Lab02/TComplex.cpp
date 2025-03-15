@@ -1,11 +1,26 @@
 #include "TComplex.h"
 #include "AComplex.h"
 
+
 TComplex::TComplex(const AComplex& z)
 {
     _arg = acomplex::arg(z);
     _norm = acomplex::norm(z);
 
+}
+
+const double& TComplex::arg(const double& val)
+{
+    _arg = val;
+    normalize();
+    return _arg;
+}
+
+const double& TComplex::norm(const double& val)
+{
+    _norm = val;
+    normalize();
+    return _norm;
 }
 
 TComplex& TComplex::operator=(const AComplex& z)
@@ -38,7 +53,7 @@ TComplex& TComplex::operator*=(const AComplex& z)
 
 TComplex& TComplex::operator/=(const TComplex& z)
 {
-    if (z.norm() <= DBL_EPSILON) throw ZERO_DIVISON_EXCEPTION;
+    if (z.norm() == 0) throw ZERO_DIVISON_EXCEPTION;
     _arg -= z.arg();
     _norm /= z.norm();
     return *this;
@@ -47,7 +62,7 @@ TComplex& TComplex::operator/=(const TComplex& z)
 TComplex& TComplex::operator/=(const AComplex& z)
 {
     const double z2_norm = acomplex::norm(z);
-    if (z2_norm <= DBL_EPSILON) throw ZERO_DIVISON_EXCEPTION;
+    if (z2_norm == 0) throw ZERO_DIVISON_EXCEPTION;
     _arg -= acomplex::arg(z);
     _norm /= acomplex::norm(z);
     return *this;
@@ -74,14 +89,14 @@ const TComplex operator*(const TComplex& z1, const AComplex& z2)
 
 const TComplex operator/(const TComplex& z1, const TComplex& z2)
 {
-    if (z2.norm() <= DBL_EPSILON) throw ZERO_DIVISON_EXCEPTION;
+    if (z2.norm() == 0) throw ZERO_DIVISON_EXCEPTION;
     return { z1.arg() - z2.arg(), z1.norm() / z2.norm() };
 }
 
 const TComplex operator/(const TComplex& z1, const AComplex& z2)
 {
     const double z2_norm = acomplex::norm(z2);
-    if (z2_norm <= DBL_EPSILON) throw ZERO_DIVISON_EXCEPTION;
+    if (z2_norm == 0) throw ZERO_DIVISON_EXCEPTION;
     return {z1.arg() - acomplex::arg(z2), z1.norm() * z2_norm};
 }
 
