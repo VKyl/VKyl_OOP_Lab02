@@ -17,7 +17,7 @@ private:
 public:
 	TComplex(const double& norm = 0, const double& arg = 0) : _arg(arg), _norm(norm) { normalize(); }
 	TComplex(const TComplex& z) : _arg(z.arg()), _norm(z.norm()) { normalize(); }
-	TComplex(TComplex&& z) : _arg(z.arg()), _norm(z.norm()) 
+	TComplex(TComplex&& z) noexcept : _arg(z.arg()), _norm(z.norm())
 	{ 
 		z.arg(0);
 		z.norm(0);
@@ -36,7 +36,7 @@ public:
 
 	TComplex& operator=(const TComplex& z) = default;
 	TComplex& operator=(TComplex&& z) = default;
-	TComplex& operator=(const AComplex& z);
+	//TComplex& operator=(const AComplex& z);
 
 private:
 	void normalize();
@@ -49,14 +49,17 @@ namespace tcomplex
 	const double imaginary(const TComplex& z);
 }
 
-TComplex& operator*=(const TComplex& z1, const TComplex& z2);
-TComplex& operator*=(const TComplex& z1, const AComplex& z2);
+TComplex& operator*=(TComplex& z1, const TComplex& z2);
+TComplex operator*=(const TComplex& z1, const TComplex& z2) { return z1 * z2; }
+
+//TComplex& operator*=(const TComplex& z1, const AComplex& z2);
 TComplex& operator/=(TComplex& z1, const TComplex& z2);
-TComplex& operator/=(TComplex& z1, const AComplex& z2);
+TComplex operator/=(const TComplex& z1, const TComplex& z2) { return z1 / z2; }
+//TComplex& operator/=(TComplex& z1, const AComplex& z2);
 
 const TComplex operator*(const TComplex& z1, const TComplex& z2);
-const TComplex operator*(const TComplex& z1, const AComplex& z2);
+//const TComplex operator*(const TComplex& z1, const AComplex& z2);
 const TComplex operator/(const TComplex& z1, const TComplex& z2);
-const TComplex operator/(const TComplex& z1, const AComplex& z2);
+//const TComplex operator/(const TComplex& z1, const AComplex& z2);
 
 ostream& operator<<(ostream& out, TComplex z);

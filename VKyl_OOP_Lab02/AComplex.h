@@ -33,9 +33,11 @@ namespace acomplex
 	const double norm(const AComplex& z);
 }
 
-AComplex& operator+=(const AComplex& z1, const AComplex& z2);
+AComplex& operator+=(AComplex& z1, const AComplex& z2);
+AComplex operator+=(const AComplex& z1, const AComplex& z2) { return z1 + z2; }
 //AComplex& operator+=(const TComplex& z1, const TComplex& z2);
-AComplex& operator-=(const AComplex& z1, const AComplex& z2);
+AComplex& operator-=(AComplex& z1, const AComplex& z2);
+AComplex operator-=(const AComplex& z1, const AComplex& z2) { return z1 - z2; }
 //AComplex& operator-=(const TComplex& z1, const TComplex& z2);
 
 const AComplex operator+(const AComplex& z1, const AComplex& z2);
