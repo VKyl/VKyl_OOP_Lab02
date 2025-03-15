@@ -34,9 +34,11 @@ public:
 	TComplex& operator/=(const AComplex& z);
 };
 
-const double real(const TComplex& z);
-const double imaginary(const TComplex& z);
-
+namespace tcomplex
+{
+	const double real(const TComplex& z);
+	const double imaginary(const TComplex& z);
+}
 const TComplex operator*(const TComplex& z1, const TComplex& z2);
 const TComplex operator*(const TComplex& z1, const AComplex& z2);
 const TComplex operator/(const TComplex& z1, const TComplex& z2);

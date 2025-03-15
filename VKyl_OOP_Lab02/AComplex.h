@@ -36,9 +36,10 @@ namespace acomplex
 	const double arg(const AComplex& z);
 	const double norm(const AComplex& z);
 }
-const AComplex operator+(const AComplex&& z1, const AComplex&& z2);
-const AComplex operator+(const AComplex&& z1, const TComplex&& z2);
-const AComplex operator-(const AComplex&& z1, const AComplex&& z2);
-const AComplex operator-(const AComplex&& z1, const TComplex&& z2);
+
+const AComplex operator+(const AComplex& z1, const AComplex& z2);
+const AComplex operator+(const AComplex& z1, const TComplex& z2);
+const AComplex operator-(const AComplex& z1, const AComplex& z2);
+const AComplex operator-(const AComplex& z1, const TComplex& z2);
 
 ostream& operator<<(ostream& out, AComplex z);

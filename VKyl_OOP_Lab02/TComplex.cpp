@@ -53,12 +53,12 @@ TComplex& TComplex::operator/=(const AComplex& z)
     return *this;
 }
 
-const double real(const TComplex& z)
+const double tcomplex::real(const TComplex& z)
 {
     return std::cos(z.arg()) * z.norm();
 }
 
-const double imaginary(const TComplex& z)
+const double tcomplex::imaginary(const TComplex& z)
 {
     return std::sin(z.arg()) * z.norm();
 }
