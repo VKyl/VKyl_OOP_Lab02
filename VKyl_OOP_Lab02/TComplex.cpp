@@ -38,6 +38,7 @@ TComplex& TComplex::operator*=(const AComplex& z)
 
 TComplex& TComplex::operator/=(const TComplex& z)
 {
+    if (z.norm() <= DBL_EPSILON) throw ZERO_DIVISON_EXCEPTION;
     _arg -= z.arg();
     _norm /= z.norm();
     return *this;
@@ -45,6 +46,8 @@ TComplex& TComplex::operator/=(const TComplex& z)
 
 TComplex& TComplex::operator/=(const AComplex& z)
 {
+    const double z2_norm = acomplex::norm(z);
+    if (z2_norm <= DBL_EPSILON) throw ZERO_DIVISON_EXCEPTION;
     _arg -= acomplex::arg(z);
     _norm /= acomplex::norm(z);
     return *this;
