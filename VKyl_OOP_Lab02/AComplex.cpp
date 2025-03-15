@@ -32,7 +32,6 @@ AComplex& operator-=(AComplex& z1, const AComplex& z2)
 
 const AComplex operator+(const AComplex& z1, const AComplex& z2)
 {
-    std::cout << z2 << std::endl;
     return { z1.re() + z2.re(), z1.im() + z2.im() };
 }
 
