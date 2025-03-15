@@ -36,7 +36,7 @@ AComplex& operator+=(AComplex& z1, const AComplex& z2)
 
 AComplex& operator-=(AComplex& z1, const AComplex& z2)
 {
-    // Subtraction assignment implementation goes here
+    z1.re() -= z2.re();
     return z1;
 }
 
@@ -49,7 +49,7 @@ AComplex& operator-=(AComplex& z1, const AComplex& z2)
 const AComplex operator+(const AComplex& z1, const AComplex& z2)
 {
     // Addition implementation goes here
-    return AComplex(); // Placeholder return
+    return { z1.re() + z2.re(), z1.im() + z2.im() };
 }
 
 //const AComplex operator+(const AComplex& z1, const TComplex& z2)
@@ -61,7 +61,7 @@ const AComplex operator+(const AComplex& z1, const AComplex& z2)
 const AComplex operator-(const AComplex& z1, const AComplex& z2)
 {
     // Subtraction implementation goes here
-    return AComplex(); // Placeholder return
+    return { z1.re() - z2.re(), z1.im() - z2.im() };
 }
 
 //const AComplex operator-(const AComplex& z1, const TComplex& z2)
@@ -72,6 +72,7 @@ const AComplex operator-(const AComplex& z1, const AComplex& z2)
 
 std::ostream& operator<<(std::ostream& out, AComplex z)
 {
-    // Output stream implementation goes here
+    char sign = (z.im() >= 0) ? '+' : '/0';
+    out << z.re() << sign << z.re() << "*i";
     return out;
 }
