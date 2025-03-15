@@ -6,7 +6,6 @@ TComplex::TComplex(const AComplex& z)
 {
     _arg = acomplex::arg(z);
     _norm = acomplex::norm(z);
-
 }
 
 const double& TComplex::arg(const double&& val)
@@ -23,12 +22,12 @@ const double& TComplex::norm(const double&& val)
     return _norm;
 }
 
-TComplex& TComplex::operator=(const AComplex& z)
-{
-    _arg = acomplex::arg(z);
-    _norm = acomplex::norm(z);
-    return *this;
-}
+//TComplex& TComplex::operator=(const AComplex& z)
+//{
+//    _arg = acomplex::arg(z);
+//    _norm = acomplex::norm(z);
+//    return *this;
+//}
 
 void TComplex::normalize()
 {
@@ -60,14 +59,14 @@ TComplex& operator/=(TComplex& z1, const TComplex& z2)
     return z1;
 }
 
-TComplex& operator/=(TComplex & z1, const AComplex& z2)
-{
-    const double z2_norm = acomplex::norm(z2);
-    if (z2_norm == 0) throw ZERO_DIVISON_EXCEPTION;
-    z1.arg(z1.arg() - acomplex::arg(z2));
-    z1.norm(z1.norm() + z2_norm);
-    return z1;
-}
+//TComplex& operator/=(TComplex & z1, const AComplex& z2)
+//{
+//    const double z2_norm = acomplex::norm(z2);
+//    if (z2_norm == 0) throw ZERO_DIVISON_EXCEPTION;
+//    z1.arg(z1.arg() - acomplex::arg(z2));
+//    z1.norm(z1.norm() + z2_norm);
+//    return z1;
+//}
 
 TComplex& operator*=(TComplex& z1, const TComplex& z2) 
 {
@@ -75,22 +74,23 @@ TComplex& operator*=(TComplex& z1, const TComplex& z2)
     z1.norm(z1.norm() * z2.norm());
     return z1;
 }
-TComplex& operator*=(TComplex& z1, const AComplex& z2) 
-{
-    z1.arg(z1.arg() + acomplex::arg(z2));
-    z1.norm( z1.norm() * acomplex::norm(z2));
-    return z1;
-}
+
+//TComplex& operator*=(TComplex& z1, const AComplex& z2) 
+//{
+//    z1.arg(z1.arg() + acomplex::arg(z2));
+//    z1.norm( z1.norm() * acomplex::norm(z2));
+//    return z1;
+//}
 
 const TComplex operator*(const TComplex& z1, const TComplex& z2)
 {
     return { z1.arg() + z2.arg(), z1.norm() * z2.norm() };
 }
 
-const TComplex operator*(const TComplex& z1, const AComplex& z2)
-{
-    return { z1.arg() + acomplex::arg(z2), z1.norm() * acomplex::norm(z2) };
-}
+//const TComplex operator*(const TComplex& z1, const AComplex& z2)
+//{
+//    return { z1.arg() + acomplex::arg(z2), z1.norm() * acomplex::norm(z2) };
+//}
 
 const TComplex operator/(const TComplex& z1, const TComplex& z2)
 {
@@ -98,12 +98,12 @@ const TComplex operator/(const TComplex& z1, const TComplex& z2)
     return { z1.arg() - z2.arg(), z1.norm() / z2.norm() };
 }
 
-const TComplex operator/(const TComplex& z1, const AComplex& z2)
-{
-    const double z2_norm = acomplex::norm(z2);
-    if (z2_norm == 0) throw ZERO_DIVISON_EXCEPTION;
-    return {z1.arg() - acomplex::arg(z2), z1.norm() * z2_norm};
-}
+//const TComplex operator/(const TComplex& z1, const AComplex& z2)
+//{
+//    const double z2_norm = acomplex::norm(z2);
+//    if (z2_norm == 0) throw ZERO_DIVISON_EXCEPTION;
+//    return {z1.arg() - acomplex::arg(z2), z1.norm() * z2_norm};
+//}
 
 
 ostream& operator<<(ostream& out, TComplex z)

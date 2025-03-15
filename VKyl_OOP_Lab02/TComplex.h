@@ -15,9 +15,14 @@ private:
 	double _arg, _norm;
 
 public:
-	TComplex(const double& norm = 0, const double& arg = 0) : _arg(arg), _norm(norm) {}
-	TComplex(const TComplex& z) = default;
-	TComplex(TComplex& z) = default;
+	TComplex(const double& norm = 0, const double& arg = 0) : _arg(arg), _norm(norm) { normalize(); }
+	TComplex(const TComplex& z) : _arg(z.arg()), _norm(z.norm()) { normalize(); }
+	TComplex(TComplex&& z) : _arg(z.arg()), _norm(z.norm()) 
+	{ 
+		z.arg(0);
+		z.norm(0);
+		normalize(); 
+	}
 	TComplex(const AComplex& z);
 	~TComplex() = default;
 
