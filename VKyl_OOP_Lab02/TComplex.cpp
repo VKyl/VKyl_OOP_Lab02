@@ -48,16 +48,12 @@ TComplex& operator/=(TComplex& z1, const TComplex& z2)
     return z1;
 }
 
-TComplex operator/=(const TComplex& z1, const TComplex& z2) { return z1 / z2; }
-
 TComplex& operator*=(TComplex& z1, const TComplex& z2) 
 {
     z1.arg(z1.arg() + z2.arg());
     z1.norm(z1.norm() * z2.norm());
     return z1;
 }
-
-TComplex operator*=(const TComplex& z1, const TComplex& z2) { return z1 * z2; }
 
 const TComplex operator*(const TComplex& z1, const TComplex& z2)
 {

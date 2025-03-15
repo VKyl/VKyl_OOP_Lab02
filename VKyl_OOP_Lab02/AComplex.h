@@ -11,7 +11,7 @@ private:
 public:
 	AComplex(const double& re = 0, const double& im = 0) : _re(re), _im(im) {}
 	AComplex(const AComplex& c) = default;
-	AComplex(AComplex& c) = default;
+	AComplex(AComplex&& c) = default;
 	AComplex(const TComplex& c);
 
 	~AComplex() = default;
@@ -36,9 +36,7 @@ const AComplex operator+(const AComplex& z1, const AComplex& z2);
 const AComplex operator-(const AComplex& z1, const AComplex& z2);
 
 AComplex& operator+=(AComplex& z1, const AComplex& z2);
-AComplex operator+=(const AComplex& z1, const AComplex& z2);
 AComplex& operator-=(AComplex& z1, const AComplex& z2);
-AComplex operator-=(const AComplex& z1, const AComplex& z2);
 
 bool operator==(const AComplex & z1, const AComplex & z2);
 ostream& operator<<(ostream& out, AComplex z);

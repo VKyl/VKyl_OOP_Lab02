@@ -1,13 +1,6 @@
 #include "AComplex.h"
 #include "TComplex.h"
 
-//AComplex& AComplex::operator=(const TComplex& z)
-//{
-//    _re = tcomplex::real(z);
-//    _im = tcomplex::imaginary(z);
-//    return *this;
-//}
-
 AComplex::AComplex(const TComplex& c) : _re(tcomplex::real(c)), _im(tcomplex::imaginary(c)) {}
 
 namespace acomplex
@@ -29,24 +22,13 @@ AComplex& operator+=(AComplex& z1, const AComplex& z2)
     z1.im() += z2.im();
     return z1;
 }
-//
-//AComplex& operator+=(AComplex& z1, const TComplex& z2)
-//{
-//    // Addition assignment implementation goes here
-//    return z1;
-//}
 
 AComplex& operator-=(AComplex& z1, const AComplex& z2)
 {
     z1.re() -= z2.re();
+    z1.im() -= z2.im();
     return z1;
 }
-
-//AComplex& operator-=(AComplex& z1, const TComplex& z2)
-//{
-//    // Subtraction assignment implementation goes here
-//    return z1;
-//}
 
 const AComplex operator+(const AComplex& z1, const AComplex& z2)
 {
@@ -54,27 +36,10 @@ const AComplex operator+(const AComplex& z1, const AComplex& z2)
     return { z1.re() + z2.re(), z1.im() + z2.im() };
 }
 
-AComplex operator+=(const AComplex& z1, const AComplex& z2) { return z1 + z2; }
-
-//const AComplex operator+(const AComplex& z1, const TComplex& z2)
-//{
-//    // Addition implementation goes here
-//    return AComplex(); // Placeholder return
-//}
-
 const AComplex operator-(const AComplex& z1, const AComplex& z2)
 {
-    // Subtraction implementation goes here
     return { z1.re() - z2.re(), z1.im() - z2.im() };
 }
-
-AComplex operator-=(const AComplex& z1, const AComplex& z2) { return z1 - z2; }
-
-//const AComplex operator-(const AComplex& z1, const TComplex& z2)
-//{
-//    // Subtraction implementation goes here
-//    return AComplex(); // Placeholder return
-//}
 
 bool operator==(const AComplex& z1, const AComplex& z2)
 {

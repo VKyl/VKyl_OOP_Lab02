@@ -51,9 +51,6 @@ const TComplex operator*(const TComplex& z1, const TComplex& z2);
 const TComplex operator/(const TComplex& z1, const TComplex& z2);
 
 TComplex& operator*=(TComplex& z1, const TComplex& z2);
-TComplex operator*=(const TComplex& z1, const TComplex& z2);
-
 TComplex& operator/=(TComplex& z1, const TComplex& z2);
-TComplex operator/=(const TComplex& z1, const TComplex& z2);
 
 ostream& operator<<(ostream& out, TComplex z);
