@@ -36,11 +36,9 @@ public:
 
 	TComplex& operator=(const TComplex& z) = default;
 	TComplex& operator=(TComplex&& z) = default;
-	//TComplex& operator=(const AComplex& z);
 
 private:
 	void normalize();
-
 };
 
 namespace tcomplex
@@ -48,17 +46,13 @@ namespace tcomplex
 	const double real(const TComplex& z);
 	const double imaginary(const TComplex& z);
 }
-//TComplex& operator/=(TComplex& z1, const AComplex& z2);
 
 const TComplex operator*(const TComplex& z1, const TComplex& z2);
-//const TComplex operator*(const TComplex& z1, const AComplex& z2);
 const TComplex operator/(const TComplex& z1, const TComplex& z2);
-//const TComplex operator/(const TComplex& z1, const AComplex& z2);
 
 TComplex& operator*=(TComplex& z1, const TComplex& z2);
 TComplex operator*=(const TComplex& z1, const TComplex& z2);
 
-//TComplex& operator*=(const TComplex& z1, const AComplex& z2);
 TComplex& operator/=(TComplex& z1, const TComplex& z2);
 TComplex operator/=(const TComplex& z1, const TComplex& z2);
 

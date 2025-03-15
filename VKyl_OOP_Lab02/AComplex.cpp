@@ -50,7 +50,7 @@ AComplex& operator-=(AComplex& z1, const AComplex& z2)
 
 const AComplex operator+(const AComplex& z1, const AComplex& z2)
 {
-    // Addition implementation goes here
+    std::cout << z2 << std::endl;
     return { z1.re() + z2.re(), z1.im() + z2.im() };
 }
 
@@ -76,9 +76,15 @@ AComplex operator-=(const AComplex& z1, const AComplex& z2) { return z1 - z2; }
 //    return AComplex(); // Placeholder return
 //}
 
+bool operator==(const AComplex& z1, const AComplex& z2)
+{
+    return fabs(z1.re() - z2.re() + z1.im() - z2.im()) <= DBL_EPSILON;
+}
+
+
 std::ostream& operator<<(std::ostream& out, AComplex z)
 {
     char sign = (z.im() >= 0) ? '+' : '/0';
-    out << z.re() << sign << z.re() << "*i";
+    out << z.re() << sign << z.im() << "*i";
     return out;
 }

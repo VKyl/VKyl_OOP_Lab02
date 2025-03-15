@@ -24,7 +24,6 @@ public:
 
 	AComplex& operator=(const AComplex& z) = default;
 	AComplex& operator=(AComplex&& z) = default;
-	//AComplex& operator=(const TComplex& z);
 };
 
 namespace acomplex
@@ -34,15 +33,12 @@ namespace acomplex
 }
 
 const AComplex operator+(const AComplex& z1, const AComplex& z2);
-//const AComplex operator+(const AComplex& z1, const TComplex& z2);
 const AComplex operator-(const AComplex& z1, const AComplex& z2);
-//const AComplex operator-(const AComplex& z1, const TComplex& z2);
 
 AComplex& operator+=(AComplex& z1, const AComplex& z2);
 AComplex operator+=(const AComplex& z1, const AComplex& z2);
-//AComplex& operator+=(const TComplex& z1, const TComplex& z2);
 AComplex& operator-=(AComplex& z1, const AComplex& z2);
 AComplex operator-=(const AComplex& z1, const AComplex& z2);
-//AComplex& operator-=(const TComplex& z1, const TComplex& z2);
 
+bool operator==(const AComplex & z1, const AComplex & z2);
 ostream& operator<<(ostream& out, AComplex z);
