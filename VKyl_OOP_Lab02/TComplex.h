@@ -15,7 +15,7 @@ private:
 	double _arg, _norm;
 
 public:
-	TComplex(const double& arg = 0, const double& norm = 0) : _arg(arg), _norm(norm) {}
+	TComplex(const double& norm = 0, const double& arg = 0) : _arg(arg), _norm(norm) {}
 	TComplex(const TComplex& z) = default;
 	TComplex(TComplex& z) = default;
 	TComplex(const AComplex& z);
@@ -29,7 +29,8 @@ public:
 	const double& norm() const { return _norm; }
 	const double& norm(const double&& val);
 
-	TComplex& operator=(const TComplex& z);
+	TComplex& operator=(const TComplex& z) = default;
+	TComplex& operator=(TComplex&& z) = default;
 	TComplex& operator=(const AComplex& z);
 
 private:

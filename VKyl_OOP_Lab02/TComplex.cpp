@@ -30,13 +30,6 @@ TComplex& TComplex::operator=(const AComplex& z)
     return *this;
 }
 
-TComplex& TComplex::operator=(const TComplex& z)
-{
-    _arg = z.arg();
-    _norm = z.norm();
-    return *this;
-}
-
 void TComplex::normalize()
 {
     if (_norm < 0)

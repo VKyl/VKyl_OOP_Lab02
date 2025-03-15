@@ -12,7 +12,7 @@ public:
 	AComplex(const double& re = 0, const double& im = 0) : _re(re), _im(im) {}
 	AComplex(const AComplex& c) = default;
 	AComplex(AComplex& c) = default;
-	AComplex(const TComplex&& c);
+	AComplex(const TComplex& c);
 
 	~AComplex() = default;
 
@@ -22,13 +22,9 @@ public:
 	double& im() { return _im; }
 	const double& im() const { return _im; }
 
-	AComplex& operator=(const AComplex&& z);
-	AComplex& operator=(const TComplex&& z);
-
-	AComplex& operator+=(const AComplex&& z);
-	AComplex& operator+=(const TComplex&& z);
-	AComplex& operator-=(const AComplex&& z);
-	AComplex& operator-=(const TComplex&& z);
+	AComplex& operator=(const AComplex& z) = default;
+	AComplex& operator=(AComplex&& z) = default;
+	AComplex& operator=(const TComplex& z);
 };
 
 namespace acomplex
@@ -36,6 +32,11 @@ namespace acomplex
 	const double arg(const AComplex& z);
 	const double norm(const AComplex& z);
 }
+
+AComplex& operator+=(const AComplex& z1, const AComplex& z2);
+AComplex& operator+=(const TComplex& z1, const TComplex& z2);
+AComplex& operator-=(const AComplex& z1, const AComplex& z2);
+AComplex& operator-=(const TComplex& z1, const TComplex& z2);
 
 const AComplex operator+(const AComplex& z1, const AComplex& z2);
 const AComplex operator+(const AComplex& z1, const TComplex& z2);
