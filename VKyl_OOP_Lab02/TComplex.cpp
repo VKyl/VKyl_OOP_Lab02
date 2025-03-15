@@ -37,6 +37,17 @@ TComplex& TComplex::operator=(const TComplex& z)
     return *this;
 }
 
+void TComplex::normalize()
+{
+    if (_norm < 0)
+    {
+        _norm *= -1;
+        _arg += PI;
+    }
+
+    if (_arg != 0) _arg = fmod(_arg, PERIOD);
+}
+
 const double tcomplex::real(const TComplex& z)
 {
     return std::cos(z.arg()) * z.norm();

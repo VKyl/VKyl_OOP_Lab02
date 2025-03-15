@@ -33,16 +33,7 @@ public:
 	TComplex& operator=(const AComplex& z);
 
 private:
-	void normalize()
-	{
-		if (_norm < 0) 
-		{ 
-			_norm *= -1; 
-			_arg += PI;
-		}
-
-		if(_arg != 0) _arg = fmod(_arg, PERIOD);
-	}
+	void normalize();
 
 };
 
